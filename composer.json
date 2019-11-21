@@ -1,0 +1,16 @@
+{
+    "name": "natepage/easy-ssm",
+    "description": "CLI to interact with SSM",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.1",
+        "symplify/package-builder": "^6.1",
+        "aws/aws-sdk-php": "^3.118"
+    },
+    "autoload": {
+        "psr-4": {
+            "NatePage\\EasySsm\\": "src"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        public: true
+
+    NatePage\EasySsm\:
+        resource: '../src'
+        exclude: '../src/{HttpKernel,Services/Aws/Data}'
+
+    Symplify\PackageBuilder\Parameter\ParameterProvider: ~
