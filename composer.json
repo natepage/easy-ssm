@@ -1,6 +1,6 @@
 {
     "name": "natepage/easy-ssm",
-    "description": "CLI to interact with SSM",
+    "description": "CLI to interact easily and safely with AWS SSM parameters store",
     "type": "library",
     "license": "MIT",
     "require": {
@@ -12,5 +12,8 @@
         "psr-4": {
             "NatePage\\EasySsm\\": "src"
         }
-    }
+    },
+    "bin": [
+        "bin/easy-ssm"
+    ]
 }
