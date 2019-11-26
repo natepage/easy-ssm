@@ -9,7 +9,6 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
 use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutoReturnFactoryCompilerPass;
 use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireSinglyImplementedCompilerPass;
 use Symplify\PackageBuilder\HttpKernel\SimpleKernelTrait;
 
 final class EasySsmKernel extends Kernel implements ExtraConfigAwareKernelInterface
@@ -18,6 +17,34 @@ final class EasySsmKernel extends Kernel implements ExtraConfigAwareKernelInterf
 
     /** @var string[] */
     private $configs = [];
+
+    /**
+     * EasySsmKernel constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->getUniqueKernelKey(), false);
+    }
+
+    /**
+     * Get cache directory for kernel.
+     *
+     * @return string
+     */
+    public function getCacheDir(): string
+    {
+        return __DIR__ . '/../../var/kernel/' . $this->getUniqueKernelKey();
+    }
+
+    /**
+     * Get log directory for kernel.
+     *
+     * @return string
+     */
+    public function getLogDir(): string
+    {
+        return __DIR__ . '/../../var/kernel/' . $this->getUniqueKernelKey() . '_logs';
+    }
 
     /**
      * Loads the container configuration.
@@ -61,7 +88,6 @@ final class EasySsmKernel extends Kernel implements ExtraConfigAwareKernelInterf
     {
         $container
             ->addCompilerPass(new AutoReturnFactoryCompilerPass())
-            ->addCompilerPass(new AutowireArrayParameterCompilerPass())
-            ->addCompilerPass(new AutowireSinglyImplementedCompilerPass());
+            ->addCompilerPass(new AutowireArrayParameterCompilerPass());
     }
 }
