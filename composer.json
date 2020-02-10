@@ -5,7 +5,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symplify/package-builder": "^6.1",
+        "symplify/package-builder": "^7.2",
+        "symplify/autowire-array-parameter": "7.2",
         "aws/aws-sdk-php": "^3.118"
     },
     "autoload": {

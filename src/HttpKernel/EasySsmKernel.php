@@ -6,17 +6,13 @@ namespace NatePage\EasySsm\HttpKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
-use Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutoReturnFactoryCompilerPass;
-use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 use Symplify\PackageBuilder\HttpKernel\SimpleKernelTrait;
 
-final class EasySsmKernel extends Kernel implements ExtraConfigAwareKernelInterface
+final class EasySsmKernel extends Kernel
 {
     use SimpleKernelTrait;
-
-    /** @var string[] */
-    private $configs = [];
 
     /**
      * EasySsmKernel constructor.
@@ -59,22 +55,6 @@ final class EasySsmKernel extends Kernel implements ExtraConfigAwareKernelInterf
     {
         $loader->load(__DIR__ . '/../../config/parameters.yaml');
         $loader->load(__DIR__ . '/../../config/services.yaml');
-
-        foreach ($this->configs as $config) {
-            $loader->load($config);
-        }
-    }
-
-    /**
-     * Set configs.
-     *
-     * @param string[] $configs
-     *
-     * @return void
-     */
-    public function setConfigs(array $configs): void
-    {
-        $this->configs = $configs;
     }
 
     /**

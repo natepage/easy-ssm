@@ -5,6 +5,8 @@ services:
 
     NatePage\EasySsm\:
         resource: '../src'
-        exclude: '../src/{HttpKernel,Services/Aws/Data}'
+        exclude:
+            - '../src/HttpKernel/*'
+            - '../src/Services/Aws/Data/*'
 
     Symplify\PackageBuilder\Parameter\ParameterProvider: ~
