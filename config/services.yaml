@@ -8,5 +8,6 @@ services:
         exclude:
             - '../src/HttpKernel/*'
             - '../src/Services/Aws/Data/*'
+            - '../src/Services/Parameters/Data/*'
 
     Symplify\PackageBuilder\Parameter\ParameterProvider: ~

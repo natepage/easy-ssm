@@ -29,7 +29,7 @@ final class EasySsmKernel extends Kernel
      */
     public function getCacheDir(): string
     {
-        return __DIR__ . '/../../var/kernel/' . $this->getUniqueKernelKey();
+        return $this->getProjectDir() . '/var/kernel/' . $this->getUniqueKernelKey();
     }
 
     /**
@@ -39,7 +39,7 @@ final class EasySsmKernel extends Kernel
      */
     public function getLogDir(): string
     {
-        return __DIR__ . '/../../var/kernel/' . $this->getUniqueKernelKey() . '_logs';
+        return $this->getProjectDir() . '/var/kernel/' . $this->getUniqueKernelKey() . '_logs';
     }
 
     /**
